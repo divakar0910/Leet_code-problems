@@ -1,6 +1,60 @@
 -----------------------------------------------------Standard Approach-------Sliding Window---------------------------------------
 Algorithm:
-1.
+1.Have two  pointers which will define the starting index and ending index of the current window.Both will be 0 at the beginning.
+2.Declare a set that will store all the unique characters that have encountered.
+3.Declare a variable max that will keep track of the length of the longest valid substring.
+4.Scan the String from left to right one character at a time.
+5.If the character is not present then it will add to the set and increment the end index.
+6.If the character is present in the set,remove it from  the set and increment the start index.
+7.steps 5 and 6 are moving the window.
+8.After the loop terminates,return max.
+
+--------------------Code in JAVA-------------------------------------
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        
+        //checking whether it is null or empty
+        if (s==null||s.equals(""))
+            return 0;
+        
+        //Declaring Variables
+        int max=0,end=0,start=0;
+        Set<Character> ilist=new HashSet<>();
+        
+        //Sliding window Algorithm
+        while( end<s.length()){
+            if(ilist.add(s.charAt(end))){
+                end++;
+                max=Math.max(max,ilist.size());
+            }
+            else{
+                ilist.remove(s.charAt(start));
+                start++;
+            }
+        }
+        return max;
+        
+        
+    }
+}
+
+-------------------Complexity Analyis----------------------------------
+Space complexity:O(n)
+Time complexity:O(n)
+
+---------------------------Test Case 1--------------------------------------------
+Input: s ="abcabcbb"
+Output: 3
+Expected: 3
+---------------------------Test case 2-----------------------------------------
+Input: s ="bbbbb"
+Output: 1
+Expected: 1
+
+---------------------------------Description---------------------
+
+
+
 
 
 
