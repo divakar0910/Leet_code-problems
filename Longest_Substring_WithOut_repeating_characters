@@ -1,5 +1,6 @@
 -----------------------------------------------------Standard Approach-------Sliding Window---------------------------------------
 Algorithm:
+
 1.Have two  pointers which will define the starting index and ending index of the current window.Both will be 0 at the beginning.
 2.Declare a set that will store all the unique characters that have encountered.
 3.Declare a variable max that will keep track of the length of the longest valid substring.
@@ -8,6 +9,8 @@ Algorithm:
 6.If the character is present in the set,remove it from  the set and increment the start index.
 7.steps 5 and 6 are moving the window.
 8.After the loop terminates,return max.
+
+
 
 --------------------Code in JAVA-------------------------------------
 class Solution {
@@ -38,9 +41,13 @@ class Solution {
     }
 }
 
+
+
 -------------------Complexity Analyis----------------------------------
 Space complexity:O(n)
 Time complexity:O(n)
+
+
 
 ---------------------------Test Case 1--------------------------------------------
 Input: s ="abcabcbb"
@@ -51,8 +58,11 @@ Input: s ="bbbbb"
 Output: 1
 Expected: 1
 
+
 ---------------------------------Description---------------------
 ![LCS](https://user-images.githubusercontent.com/81841018/236638962-eb79e8d1-6d1a-431e-b697-ad9a7aa0d254.jpg)
+
+
 
 
 
