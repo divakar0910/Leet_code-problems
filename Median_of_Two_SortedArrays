@@ -1,0 +1,11 @@
+------------------------------------Solution 1---Standard merge Algorithm-------------------------------------------
+Algorithm:
+
+1.Declare one array of size equal to the length of two sorted arrays,
+3.Declare three variables which points to the starting index of the  arrays.
+2.Run a while until any one of the array iterates to end.
+4.if the arr1 element is less than the arr2,then copy arr1 element to the new array,Increment the indexes by 1.
+5.If the arr2 element is less than arr1,then copy arr2 element to the new array,Increment the indexes by 1.
+6.Step 4 and 5 will runs until the end of while loop.
+7.Copy the remaining elements in the large arrray to the new array.
+8.Find the median and return it.
