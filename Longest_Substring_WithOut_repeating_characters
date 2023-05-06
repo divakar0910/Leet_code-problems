@@ -1,1 +1,29 @@
-
+Solution1-----Failed to execute some test cases
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if (s==null)
+            return 0;
+        int max=0,count=0,i=0;
+        List<Character> ilist=new ArrayList<>();
+        
+        while(i<s.length()){
+            if(ilist.contains(s.charAt(i))){
+                ilist.clear();
+                if(count>max)
+                   max=count;
+                count=0;
+                
+                
+            }
+            else{
+                count++;
+                ilist.add(s.charAt(i));
+                i++;
+            }
+            if(count>max)
+              max=count;
+        }
+        return max;
+        
+    }
+}
