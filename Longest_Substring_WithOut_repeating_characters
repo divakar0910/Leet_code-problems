@@ -57,58 +57,7 @@ Expected: 1
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Solution1-----Failed to execute some test cases
+----------------------------------------Solution2-----Failed to execute some test cases
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         if (s==null)
@@ -137,3 +86,7 @@ class Solution {
         
     }
 }
+--------------------------------Test case 1-------------------------------
+Input: s="dvdf"
+output: 2
+Expected: 3
