@@ -1,1 +1,119 @@
+-----------------------------------------------2 pointer Approach---------------------------------------------------------------------
+1.Declare two pointers left and right which points to the left and right side of the current center.
+2.Declare two variables len,res which keep track of the length and the palindromic substring.
+3.Do a for loop until the length of the string:
+   (i)check for odd length palindromes:
+          (I)Initialize the left and right to the current iteration(i) character.
+          (II)decrement the left pointer and right pointer until the character at left and right matches.
+          (III)If the len of the current palindrome is greater than previous one , update the len,res with current one.
+   
+   (ii)check for even length palindromes:
+         (I)Initialize the left and right pointers to the current(i) iteration and current+1(i+1) iteration character.
+         (II)decrement the left and increment the right pointer until the character at left and right matches.
+         (III)If the length of the current palindrome is greater than previous one,update the len,res with current one.
+       
+
+
+----------------------------------------------Code in JAVA-----------------------------------------------------------------------------
+class Solution {
+    public String longestPalindrome(String s) {
+        int len=0,left=0,right=1;
+        String res="";
+
+        //Odd length
+        for(int i=0;i<s.length();i++){
+            
+            //Odd length Palindrome
+            left=i;
+            right=i;
+            while(left>=0 && right<s.length() && s.charAt(left)==s.charAt(right)){
+                if(right-left+1>len){
+                    len=right-left+1;
+                    res=s.substring(left,right+1);
+                }
+                left--;
+                right++;
+            }
+            
+            //Even length Palindrome
+            left=i;
+            right=i+1;
+            while(left>=0 && right<s.length() && s.charAt(left)==s.charAt(right)){
+                if(right-left+1>len){
+                    len=right-left+1;
+                    res=s.substring(left,right+1);
+                }
+                left--;
+                right++;
+            }
+
+        }
+    return res;
+        
+    }
+}
+-----------------------------------------------Complexity Analysis----------------------------------------------------
+Time Complexity:O(n^2)
+Space Complexity:O(1)
+
+------------------------------------------------Test Cases-----------------------------------------------------------
+Input: s ="babad"
+Output: "aba"
+Expected: "bab"
+
+Input: s ="cbbd"
+Output: "bb"
+Expected: "bb"
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+------------------------------------------------------Dynamic programming---------------------------------------------------------------
+1.Create a 2-D array whose length is equal to length of the string.
+2.Initialize all the diagonal value with true value as 1 length string is always a palidrome.
+3.Declare two variables max,res which keep track of longest palindromic substring.
+4.create a outer loop and initialize the loop variable(i=len(string)-1) with the last index of the array(reverse traversing).
+5.create a inner loop and intialize the loop variable with the next index of the outer loop variable(j=i+1).
+6.If the character at index i and j matches and the prevoius value(dp[i+1][j-1]) of array or len of the the string is one 
+   then check for the current length of palindrome.
+7.If the current palidrome is greater than previous one,then update the len and res varibales.
+
+
+----------------------------------------------------Code in JAVA---------------------------------------
+class Solution {
+    public String longestPalindrome(String s) {
+
+        boolean dp[][] = new boolean[s.length()][s.length()];
+        int max=0;
+        String res=Character.toString(s.charAt(0));
+
+        for(int i=0;i<s.length();i++)
+           dp[i][i]=true;
+
+        for(int i=s.length()-2;i>=0;i--){
+            for(int j=i+1;j<s.length();j++){
+                if(s.charAt(i)==s.charAt(j))
+                 if(j-i==1 || dp[i+1][j-1]==true){
+                 dp[i][j]=true;
+                 if(j-i+1>max){
+                     max=j-i+1;
+                     res=s.substring(i,j+1);
+                 }
+                 }
+            }
+        }
+        return res;
+        
+----------------------------------------------------------------Complexity analysis--------------------------------------------
+Time complexity:O(n^2)
+Space complexity:O(n^2)
+
+------------------------------------------------Test Cases-----------------------------------------------------------
+Input: s ="babad"
+Output: "aba"
+Expected: "bab"
+
+Input: s ="cbbd"
+Output: "bb"
+Expected: "bb"
+
 
