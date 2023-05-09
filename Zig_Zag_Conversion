@@ -1,0 +1,46 @@
+------------------------------------------Looping Approach-----------------------------------------
+1.Declare a variable step,res which is intialized by 2*numRows-2 and empty.
+2.If the string s is empty or null then return empty string.
+3.If numRows is 1 then return the string.
+4.do a looping(i) until the end of numRows.
+5.for each row add elements to the res string by using the formulas: j=j+step and j+step-2*i
+6.Return  the res to the calling fucntion.
+
+------------------------------------------Code in JAVA----------------------------------------------
+class Solution {
+    public String convert(String s, int numRows) {
+        //Checking if string is empty or numRows is invalid
+        if(s.isEmpty()||numRows<1||s==null)
+          return "";
+        else if(numRows==1)
+           return s;
+        int step=2*numRows-2,j;
+        StringBuilder res = new StringBuilder();
+        for(int i=0;i<numRows;i++)
+            for(j=i;j<s.length();j+=step){
+                res.append(s.charAt(j));
+                if(i!=0 && i!=numRows-1 &&(j+step-2*i)<s.length())
+                   res.append(s.charAt(j+step-2*i));
+            }
+        return res.toString();
+        
+    }
+}
+
+----------------------------------------Complexity Analysis-------------------------------------------
+Time Complexity:O(n)
+Space Complexity:O(1)
+
+----------------------------------------Test cases-----------------------------------------------------
+Input: s ="PAYPALISHIRING"
+       numRows = 3
+Output: "PAHNAPLSIIGYIR"
+Expected:"PAHNAPLSIIGYIR"
+
+
+Input: s ="PAYPALISHIRING"
+       numRows = 4
+Output: "PINALSIGYAHRPI"
+Expected: "PINALSIGYAHRPI"
+
+_____________________________________________________________End of Approach_______________________________________________________________________________________________________________
