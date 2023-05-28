@@ -1,1 +1,58 @@
+-----------------------------------Algorithm--------------------------------------------------
+1.Sort the Array(n*logn time).
+2.If the sum of first three elements(nums[0]+nums[1]+nums[2]) are greater than or equal to the target  then return nums[0]+nums[1]+nums[2].
+3.If the sum of last three elements (nums[len-3]+nums[len-2]+nums[len-1]) are less than or equal to the target then return nums[len-3]+nums[len-2]+nums[len-1].
+4.Declare a variable called minSum and initialize with Integer.MAX_VALUE.
+5.For each element do the following steps.
+6.Delcare two pointers left,right that points to the i+1 and nums.length-1 element.
+7.Declare sum and intialize with nums[i]+nums[left]+nums[right].
+8.If the sum>target then decrement the right pointer(right--).
+9.IF the sum<=target then Increment the left pointer(left++).
+10.If the minSum>sum then assign minSum with sum.
 
+
+--------------------------------------------------------Code in JAVA---------------------------------------------------------------------------
+class Solution {
+    public int threeSumClosest(int[] nums, int target) {
+      int minSum=Integer.MAX_VALUE;
+      Arrays.sort(nums);
+      if(nums[0]+nums[1]+nums[2]>=target)
+         return nums[0]+nums[1]+nums[2];
+      int len=nums.length;
+      if(nums[len-3]+nums[len-2]+nums[len-1]<=target)
+         return nums[len-3]+nums[len-2]+nums[len-1];
+      for(int i=0;i<nums.length;i++){
+        int j=i+1;
+        int k=nums.length-1;
+        while(j<k){
+            int sum = nums[i]+nums[j]+nums[k];
+             if (sum>target)
+                k--;
+            else
+              j++;
+             if(Math.abs(sum-target)<Math.abs(minSum-target))
+              minSum=sum;
+            }
+           
+          
+        }
+      }
+      return minSum;  
+    }
+}
+
+
+--------------------------------------------------Test Cases---------------------------------------------------
+Input: nums = [-1,2,1,-4]
+target = 1
+Output: 2
+Expected:2
+
+Input: nums = [0,0,0]
+target = 1
+Output: 0
+Expected: 0
+
+-----------------------------------------------------------------Complexity Analysis--------------------------------
+Time Complexity:O(n^2)
+Space complexity:O(1)
